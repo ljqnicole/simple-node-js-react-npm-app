@@ -1,24 +1,9 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:lts-buster-slim'
-            args '-u root:root'
-        }
-    }
+    agent any
     stages {
-        stage('Checkout SCM') {
+        stage('Build') { 
             steps {
-                git branch: 'master', url: 'https://github.com/your-repo/simple-node-js-react-npm-app.git'
-            }
-        }
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Run Tests') {
-            steps {
-                sh 'npm test'
+                sh 'npm install' 
             }
         }
     }
